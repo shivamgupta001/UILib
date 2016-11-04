@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: textfield.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: textfield.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** This is a description of the Textfield Module. */
+var fTextfield = function($fieldset){
+		
+		var textfield = {
+			scope : this,
+			 /** @access private */
+			_init : function(){
+				
+				this._initialize();
+				this._generateTemplate();
+				this._bindEvents();
+				this._attachProperties();
+				this._render();	
+			},
+			 /** @access private */
+			_initialize : function(){
+				var me = this.scope;
+
+				 /** @access private */
+				this.dynamicId = "textField-"+getRandomInt(1, 10000);
+				this.fieldLabel = me.fieldLabel || '';
+				this.flex = me.flex || false;
+				this.labelClass = me.labelClass || false;
+				this.compClass = me.compClass || false;
+				this.btnClass = me.btnClass||false;
+				this.placeHolder = me.placeHolder || '';
+				this.pattern = me.pattern || '';
+				this.required = (me.required === true) ? 'required' : '';
+				this.value = me.value || '';
+				this.readOnly = (me.readOnly === true) ? 'readonly' : '';
+				this.maxlength = me.maxlength || '';
+				this.btn = (me.btn === false) ? false : true;
+				this.label = (me.label === false) ? false : true;
+				this.labelAreaDisplay = (me.labelDisplayArea === false)  ? false : true;
+				this.btnAreaDisplay = (me.btnAreaDisplay === false) ? false : true;
+
+				 /** @access private */
+				this.render = me.render || '';
+				this.listeners = me.listeners || '';
+
+			},
+			 /** @access private */
+			_generateTemplate : function(){
+				
+				this.$childTemplate = $(`&lt;div class="formComp-field" `+ (this.flex? 'style="flex:'+this.flex+'"' : '')+`> 
+											`+(this.labelAreaDisplay ? "&lt;span class='formComp-field-label "+(this.labelClass ? this.labelClass:'' )+" '>"+(this.label ? '&lt;label for="'+this.dynamicId+'">'+this.fieldLabel+'&lt;/label>' : '')+"&lt;/span>" : '')+`
+											&lt;span 
+												class="formComp-field-control `+ (this.required === 'required' ? ' formComp-field-req formComp-field-err':' formComp-field-blank')+``+(this.compClass ? this.compClass : '' )+`">
+													&lt;input 
+														type="text" 
+														id="`+this.dynamicId+`" 
+														value="`+this.value+`"
+														placeholder="`+this.placeHolder+`" 
+														pattern = "`+this.pattern+`"
+														maxlength = "`+this.maxlength+`" 
+														`+this.required+` 
+														`+this.readOnly+`> 
+											&lt;/span>
+											`+(this.btnAreaDisplay ? "&lt;span class='formComp-field-btn "+(this.btnClass ? this.btnClass:'' )+" '>"+(this.btn ? '&lt;button>Click&lt;/button>' : '')+"&lt;/span>" : '')+`
+											&lt;/div>`);
+				this.$innerComp = this.$childTemplate.find("input")[0];
+			},
+			 /** @access private */
+			_bindEvents : function(){
+				var me = this.scope;
+				if(this.listeners != ''){
+					for(var listener in this.listeners){
+			
+						var eventNamespace = 'fComp.'+getRandomInt(1, 10000);
+						$(this.$innerComp).on(eventNamespace , this.listeners[listener].bind(this.scope));
+						this.$innerComp[listener] = this._handleEventsBefore.bind(this, eventNamespace);
+					}
+				}
+			},
+			 /** @access private */
+			_render : function(){
+				$fieldset.append(this.$childTemplate);	
+				if(this.render != ''){
+					this.render();
+				}
+			},
+			 /** @access private */
+			_attachProperties : function(){
+				var me = this.scope;
+
+				//properties
+				me.$childTemplate = this.$childTemplate;
+				me.$innerComp = this.$innerComp;
+				
+				//methods
+				sharedMethods.call(me);
+			},
+			 /** @access private */
+			_handleEventsBefore : function(a,b){
+				
+				$(this.$innerComp).trigger(a , b.target.value);
+			}
+		};
+		
+				
+		function getRandomInt(min, max){
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random()*(max - min)+min);
+		}
+		
+		textfield._init();
+	
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#fCheckbox">fCheckbox</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#fRadio">fRadio</a></li><li><a href="global.html#fTextArea">fTextArea</a></li><li><a href="global.html#fTextfield">fTextfield</a></li><li><a href="global.html#sharedMethods">sharedMethods</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.1</a> on Fri Sep 23 2016 16:13:51 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

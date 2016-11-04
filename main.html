@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- created by shivam gupta 8/15/2016-->
+<html>
+<head>
+	
+	
+</head>
+<body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="./dist/tflib.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./release/build/style.min.css">
+
+<script>
+(function(){
+	console.time("form");
+	Form(
+	{
+		formName : 'invoice',
+		width : '100%',
+		height : '100%',
+		margin : 5,
+		formLayout : 'column',
+		formItems : [{
+				
+			formLayout : 'row',
+			formItems : [{
+				flex: 1, 
+				// Sender Information Left
+				formLayout: 'column',
+				formItems : [
+				{
+					fieldLabel : 'Loyalty Card#:',
+					fieldType : 'textfield',
+					value : 'Shivam',
+					maxlength : '10',
+					readOnly : true,
+					labelCss : '',
+					label : false
+				},{
+					fieldLabel : 'Name:',
+					fieldType : 'textfield',
+					required : false,
+					btnClass : 'abcd',
+					render : function(){
+
+					},
+					listeners : {
+						'oninput' : handleNameOnInput,
+						'onchange' : handleNameOnChange
+					}
+				},{
+					fieldLabel : 'Address:',
+					fieldType : 'textfield',
+					required : true,
+					btnClass : 'abcd'
+				},{
+					fieldLabel : 'Zip:',
+					fieldType : 'textfield',
+					btnClass : 'abcd'
+				},{
+					fieldLabel : 'Phones:',
+					fieldType : 'textfield',
+					required : true,
+					btnClass : 'abcd'
+				},{
+					fieldType : 'textfield',
+					btnClass : 'abcd'
+				},{
+					fieldType : 'textfield'
+				},{
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Entity Type',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Other Language Fields',
+					fieldType : 'radio',
+					groupLayout : 'column',
+					fieldGroup : [{
+						name : 'vehicle',
+						display : 'I have a Bike',
+						value : 'Bike'
+					},{
+						name : 'vehicle',
+						display : 'I have a Car',
+						value : 'Car'
+					}],
+					listeners : {
+						'onchange' : function(e , val){
+							debugger;
+						}
+					}
+
+				}]
+			},{
+				flex: 1,
+				// Sender Information Right
+				formLayout: 'column',
+				formItems : [
+				{
+					fieldLabel : 'Country0000:',
+					fieldType : 'textfield',
+					required : true,
+					btn : false
+				},{
+					fieldLabel : 'State:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'City:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'ID:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Zip:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'DOB:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'E-Mail:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Nationality:',
+					fieldType : 'textfield'
+				}]
+			},{
+				flex: 1,
+				// Sender Information Right
+				formLayout: 'column',
+				formItems : [
+				{
+					fieldLabel : 'Country:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'State:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'City:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'ID:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Zip:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'DOB:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'E-Mail:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Nationality:',
+					fieldType : 'textfield'
+				}]
+			}]
+		},{
+			display : 1,	
+			formLayout : 'row',
+			formItems : [{
+				flex: 1, 
+				// Sender Information Left
+				formLayout: 'column',
+				formItems : [
+				{
+					fieldLabel : 'Loyalty Card#:',
+					fieldType : 'textfield',
+					value : 'Shivam',
+					maxlength : '10',
+					readOnly : true,
+					flex : 2,
+					btnClass : 'abcd'
+				},{
+					fieldLabel : 'Name:',
+					fieldType : 'textfield',
+					required : false,
+					btnClass : 'abcd',
+					render : function(){
+
+					},
+					listeners : {
+						'oninput' : handleNameOnInput
+					}
+				},{
+					fieldLabel : 'Address:',
+					fieldType : 'textfield',
+					required : true,
+					btnClass : 'abcd'
+				},{
+					fieldLabel : 'Zip:',
+					fieldType : 'textfield',
+					btnClass : 'abcd'
+				},{
+					fieldLabel : 'Phones:',
+					fieldType : 'textfield',
+					required : true,
+					btnClass : 'abcd'
+				},{
+					fieldType : 'textfield',
+					btnClass : 'abcd'
+				},{
+					fieldType : 'textfield'
+				},{
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Entity Type',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Other Language Fields',
+					fieldType : 'checkbox',
+					groupLayout : 'column',
+					fieldGroup : [{
+						name : 'vehicle',
+						display : 'I have a Bike',
+						value : 'Bike'
+					},{
+						name : 'vehicle',
+						display : 'I have a Car',
+						value : 'Car'
+					}],
+					listeners : {
+						'onchange' : function(a,b,c,d){
+							debugger;
+						}
+					}
+
+				}]
+			},{
+				flex: 1,
+				// Sender Information Right
+				formLayout: 'column',
+				formItems : [
+				{
+					fieldLabel : 'Country:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'State:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'City:',
+					fieldType : 'textfield',
+					required : true
+				},{
+					fieldLabel : 'ID:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Zip:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'DOB:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'E-Mail:',
+					fieldType : 'textfield'
+				},{
+					fieldLabel : 'Nationality:',
+					fieldType : 'textfield'
+				}]
+			}/*,{
+				flex: 1,
+				// Sender Information Right
+				formLayout: 'row',
+				formItems : [{
+					flex : 1,
+					fieldType : 'container',
+					containerClass : 'imgContainer',
+					html : '<span>Inner Template</span>'
+					
+				},{
+					flex : 1,
+					fieldType : 'container',
+					containerClass : 'imgContainer',
+					html : '<img width="150px" height="150px" src="Caution.png">',
+					listeners : {
+						'onclick' : function(a, b, c){
+							alert("clicked");
+						}
+					}
+				}]
+			}*/]
+		}]
+	});
+	console.timeEnd("form");
+	function handleNameOnInput(e, val){
+		console.log(val);
+		debugger;
+	}
+	function handleNameOnChange(e, val){
+		console.log(val);
+		debugger;
+	}
+})();
+	
+</script>
+</body>
+</html>

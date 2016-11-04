@@ -1,0 +1,67 @@
+
+.formComp{
+	display : flex;
+	flex : 1;
+}
+.formComp-fieldset-col{
+	display: flex;
+	flex : 1;
+	flex-direction: column;
+}
+.formComp-fieldset-row{
+	display: flex;
+	flex : 1;
+	flex-flow : row wrap;
+}
+.formComp-field{
+	
+	display: flex;
+	flex-flow: row wrap;
+}
+.formComp-field .formComp-field-label{
+	flex:3;
+}
+
+.formComp-field .formComp-field-control{
+	flex : 4;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.formComp-field .formComp-field-btn{
+	flex : 3;
+
+}
+.formComp-field-blank::before{
+	content : '\00a0\00a0\00a0\00a0\00a0\00a0';
+}
+.formComp-field-blank::after{
+	content : '\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
+}
+
+.formComp-field-req::before{
+	content : '\00a0\00a0\002A\00a0\00a0';
+	color: red;
+}
+.formComp-field-err::after{
+	background-image: url(Caution.png);
+    background-size: 15px 15px;
+    display: inline-block;
+    vertical-align: middle;
+    content : "";
+    width: 28px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position-x: 8px;
+}
+div{
+	border : 1px solid orange;
+	margin : 2px;
+	padding : 2px;
+}
+.imgContainer{
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
